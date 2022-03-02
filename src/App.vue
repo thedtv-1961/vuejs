@@ -1,10 +1,18 @@
-<script setup>
+<script>
+export default {
+  data() {
+    return {
+      counter: 0,
+    };
+  },
+  methods: {
+    increment() {
+      return this.counter++;
+    }
+  }
+};
 </script>
 
 <template>
-  <h1>Hi</h1>
+  <button @click="increment">Counter = {{ counter }}</button>
 </template>
-
-<style>
-
-</style>
