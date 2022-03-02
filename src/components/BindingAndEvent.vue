@@ -7,7 +7,7 @@ export default {
   },
   methods: {
     increment() {
-      return this.counter++;
+      this.counter++;
     }
   }
 };
