@@ -6,8 +6,9 @@ let id = 0;
 const store = createStore({
   state() {
     return {
+      isLoading: false,
       count: 0,
-      todos: [ 
+      todos: [
         {
           id: id++,
           text: 'html',
@@ -30,6 +31,9 @@ const store = createStore({
     increment(state, val = 1) { // tham so 1 la state
       state.count += val;
     },
+    updateLoadingStatus(state) {
+      state.isLoading = !state.isLoading;
+    },
   },
   getters: { // computed
     todoDones(state, getters) { // tham so 1 la state, tham so 2 la getters
@@ -37,6 +41,19 @@ const store = createStore({
     },
     countTodoDone(state, getters) {
       return getters.todoDones.length;
+    }
+  },
+  actions: {
+    actionGetTodos({ state, commit }) {
+      commit('updateLoadingStatus');
+
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          commit('updateLoadingStatus');
+          resolve(state.todos);
+          // reject('error hihi');
+        }, 2000);
+      });
     }
   }
 })
