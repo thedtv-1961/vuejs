@@ -1,5 +1,5 @@
 <template>
-  <h3>Sử dụng State</h3>
+  <h3>Sử dụng State và Mutation (method) </h3>
   <button @click="buttonClick">State.count = {{ count }}</button>
 </template>
 
@@ -12,7 +12,7 @@ export default {
   },
   methods: {
     buttonClick() {
-      // Su dung ham trong mutation
+      // Su dung mutation trong method, vi mutation la method
       this.$store.commit("increment");
     },
   },
