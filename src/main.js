@@ -1,4 +1,20 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import { createStore } from 'vuex'
 
-createApp(App).mount('#app')
+const store = createStore({
+  state() {
+    return {
+      count: 0
+    }
+  },
+  mutations: {
+    increment(state) {
+      state.count++
+    }
+  }
+})
+
+const app = createApp(App);
+// app.mount('#app');
+app.use(store).mount('#app');
