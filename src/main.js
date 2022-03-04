@@ -2,15 +2,41 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import { createStore } from 'vuex'
 
+let id = 0;
 const store = createStore({
   state() {
     return {
-      count: 0
+      count: 0,
+      todos: [ 
+        {
+          id: id++,
+          text: 'html',
+          done: true,
+        },
+        {
+          id: id++,
+          text: 'css',
+          done: true,
+        },
+        {
+          id: id++,
+          text: 'js',
+          done: false,
+        },
+      ],
     }
   },
-  mutations: {
-    increment(state) {
+  mutations: { // method
+    increment(state) { // tham so 1 la state
       state.count++
+    },
+  },
+  getters: { // computed
+    todoDones(state, getters) { // tham so 1 la state, tham so 2 la getters
+      return state.todos.filter((t) => t.done)
+    },
+    countTodoDone(state, getters) {
+      return getters.todoDones.length;
     }
   }
 })
