@@ -27,8 +27,8 @@ const store = createStore({
     }
   },
   mutations: { // method
-    increment(state) { // tham so 1 la state
-      state.count++
+    increment(state, val = 1) { // tham so 1 la state
+      state.count += val;
     },
   },
   getters: { // computed
